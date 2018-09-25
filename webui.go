@@ -11,7 +11,7 @@ func setupRouter() *mux.Router {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/new", NewKey)
-	router.HandleFunc("/cancel/{key}", CancelKey) //.Methods("POST")
+	router.HandleFunc("/cancel/{key}", CancelKey).Methods("POST")
 	router.HandleFunc("/status/{key}", CheckKey)
 	router.HandleFunc("/info", Info)
 
