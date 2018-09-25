@@ -8,16 +8,20 @@ import (
 const (
 	startCharLower   = 'a'
 	startCharUpper   = 'A'
+	startNumber      = '0'
 	charNumber       = 26
 	doubleCharNumber = 52
-	maxCharNumber    = 7311616
+	numCharNumber    = 62
+	maxCharNumber    = 14776336
 )
 
 func intToChar(idx int) rune {
 	if idx < charNumber {
 		return rune(startCharLower + idx)
-	} else if idx < charNumber*2 {
+	} else if idx < doubleCharNumber {
 		return rune(startCharUpper + (idx - charNumber))
+	} else if idx < numCharNumber {
+		return rune(startNumber + (idx - doubleCharNumber))
 	} else {
 		return '-'
 	}
@@ -33,8 +37,8 @@ func translateNumber(idx int) []int {
 
 	idxMod = idx
 	for {
-		idxDiv = idxMod % doubleCharNumber
-		idxMod = idxMod / doubleCharNumber
+		idxDiv = idxMod % numCharNumber
+		idxMod = idxMod / numCharNumber
 		result = append(result, idxDiv)
 		if idxMod == 0 {
 			break
