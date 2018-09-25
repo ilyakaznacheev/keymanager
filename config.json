@@ -1,0 +1,7 @@
+{
+    "Redis": {
+        "Address": "localhost:6379",
+        "Password": "",
+        "DataBase": 0
+    }
+}
